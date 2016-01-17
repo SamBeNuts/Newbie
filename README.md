@@ -7,7 +7,7 @@
 > Pour travailler sur l'OS, vous devez en premier lieu avoir [WAMP](http://www.wampserver.com/), ou un équivalent, et ensuite suivre la partie `BDD`.
 
 - Les seuls fichiers que vous avez le droit de modifier sont ceux du dossier `app`
-  - Exception le fichier `package.json` qui est un fichier personnel (voir la partie `package.json` pour plus d'informations), vous pouvez donc le modifier à votre guise. En cas de problèmes, retéléchargez-le.
+  - Exception le fichier `package.json` qui est un fichier personnel (voir la partie `package.json` pour plus d'informations), vous pouvez donc le modifier à votre guise. En cas de problèmes, retéléchargez-le. Par contre, faites très attention à ne jamais `commit` ce fichier.
 - Si vous voulez rajouter des images, faites-le dans le dossier `images` (à faire en cas de nécessité)
 - Avant de faire des changements importants, demandez l'avis du groupe
 - Respectez la syntaxe et si possible prenez le temps de commenter vos lignes de code
@@ -62,7 +62,7 @@ Vous pouvez donc le remplacer par ce code :
   }
 }
 ```
-> Ce fichier est personnel, vous pouvez donc le modifier à votre guise. En cas de problèmes, retéléchargez-le.
+> Ce fichier est personnel, vous pouvez donc le modifier à votre guise. En cas de problèmes, retéléchargez-le. Par contre, faites très attention à ne jamais `commit` ce fichier.
 
 #### Contact
 Si vous rencontrez un problème ou si vous avez des questions :
