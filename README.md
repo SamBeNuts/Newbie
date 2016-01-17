@@ -32,9 +32,7 @@ Ce fichier est celui qui gère la fenêtre de l'OS. Lors de la première ouvertu
     "toolbar": false,
     "fullscreen": true,
     "frame": false,
-    "icon": "app/images/favicon.png",
-    "width": 1920,
-    "height": 1080
+    "icon": "app/images/favicon.png"
   },
   "dependencies": {
     "mysql": "^2.10.2"
@@ -54,8 +52,8 @@ Vous pouvez donc le remplacer par ce code :
     "fullscreen": false,
     "frame": true,
     "icon": "app/images/favicon.png",
-    "width": 1920,
-    "height": 1080
+    "width": `largeur de votre écran, ex:1920`,
+    "height": `hauteur de votre écran, ex:1080`
   },
   "dependencies": {
     "mysql": "^2.10.2"
