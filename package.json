@@ -1,0 +1,17 @@
+{
+  "name": "Newbie",
+  "version": "0.1.0",
+  "description": "Newbie OS",
+  "main": "app/index.php",
+  "window": {
+    "toolbar": false,
+    "fullscreen": true,
+    "frame": false,
+    "icon": "app/images/favicon.png",
+    "width": 1920,
+    "height": 1080
+  },
+  "dependencies": {
+    "mysql": "^2.10.2"
+  }
+}
