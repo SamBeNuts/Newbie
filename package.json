@@ -7,9 +7,7 @@
     "toolbar": false,
     "fullscreen": true,
     "frame": false,
-    "icon": "app/images/favicon.png",
-    "width": 1920,
-    "height": 1080
+    "icon": "app/images/favicon.png"
   },
   "dependencies": {
     "mysql": "^2.10.2"
