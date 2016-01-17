@@ -36,8 +36,8 @@ q:before, q:after {
 }
 
 @font-face {
-	font-family: "Berlin sans FB";
-	src: url('../fonts/font.ttf');
+	  font-family: "Berlin sans FB";
+	  src: url('../fonts/font.ttf');
 }
 
 table {
@@ -56,41 +56,94 @@ body {
 /* Le css de #fond est géré en js. */
 #fond{
     position: absolute;
+    min-width:100%; /* Pour que l'image prenne tout l'écran. */
+    min-height:100%; /* Pour que l'image prenne tout l'écran. */
+}
+
+/* Le css de l'image de #fond. */
+#fond img{
+    min-width:100%; /* Pour que l'image prenne tout l'écran. */
+    min-height:100%; /* Pour que l'image prenne tout l'écran. */
+}
+
+/* Css du cadre contenant l'espace de connexion. */
+#cadre{
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    top: 50%;
+    margin-top: -200px;
+    left: 50%;
+    margin-left: -250px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50px;
+}
+
+/* Css de l'image du logo. */
+#logo img{
+    position: relative;
+    width: 450px;
+    height: 80px;
+    margin-top: 65px;
+    left: 25px;
 }
 
 /* Css du champ où l'on tappe son mot de passe. */
 input{
-    position: absolute;
-    width: 500px;
-    height: 96px;
-    top: 50%;
+    position: relative;
+    width: 450px;
+    height: 100px;
     margin-top: 20px;
-    left: 50%;
-    margin-left: -250px;
-    border: none;
-    background: none;
+    left: 15px;
     font-size: 50px;
+    border: 10px black solid;
+    background-color: rgba(0, 0, 0, 0.25);
     font-family: 'Berlin sans FB';
     text-align: center;
+    border-radius: 20px;
+}
+
+/* Css du champ au survol. */
+input:hover{
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: background-color 0.5s;
 }
 
 /* Permet d'enlever le cadre bleu par défaut qui apparaît quand la personne rentre son mot de passe. */
 input:focus{
     outline: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: background-color 0.5s;
 }
 
 /* Css du bouton pour valider son mot de passe. */
 button{
-    position: absolute;
+    position: relative;
     width: 100px;
     height: 30px;
-    top: 50%;
-    margin-top: 130px;
-    left: 50%;
-    margin-left: -50px;
+    margin-top: 20px;
+    margin-left: 200px;
     font-size: 20px;
+    color: black;
     font-family: 'Berlin sans FB';
     text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1);;
+}
+
+/* Css du bouton au survol. */
+button:hover{
+    color: white;
+    background-color: rgba(0, 0, 0, 1);
+    transition: color 0.5s;
+    transition: background-color 0.5s;
+}
+
+/* Permet d'enlever le cadre orange par défaut qui apparaît quand la personne clique. */
+button:focus{
+    outline: none;
 }
 
 /* Css du message d'erreur si le compte est inexistant. */
@@ -99,13 +152,13 @@ button{
     width: 200px;
     height: 30px;
     top: 50%;
-    margin-top: 180px;
+    margin-top: 155px;
     left: 50%;
     margin-left: -100px;
     font-size: 25px;
     font-family: 'Berlin sans FB';
     text-align: center;
-    color: maroon;
+    color: rgb(255, 50, 50);;
 }
 
 /* Css du texte en bas de page. */
