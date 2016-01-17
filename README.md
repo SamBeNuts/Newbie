@@ -15,7 +15,7 @@
 ### BDD
 1. Commencez par créer une base de données `newbie` dans phpmyadmin avec `utf8_unicode_ci` comme interclassement
 2. [Téléchargez ce fichier](https://drive.google.com/open?id=0B9r0GJvYkipNa0tKSy1sRzNWUHM)
-3. Une fois le fichier téléchargé, cliquez dessus et allez dans `Importer`, puis choisissez le fichier `profil.sql` et faites `exécuter`
+3. Une fois le fichier téléchargé, allez dans votre base de données et cliquez sur `Importer`, puis choisissez le fichier `profil.sql` et faites `exécuter`
 4. Votre base de données est maintenant opérationnelle
 
 > Votre base de données est personnelle, vous pouvez donc la modifier à votre guise. En cas de problèmes, vous pouvez la supprimer et refaire les étapes ci-dessus.
