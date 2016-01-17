@@ -1,3 +1,4 @@
+/* En-dessous css d'initialisation. Ne pas modifier. */
 html, body, div, span, applet, object, iframes,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -44,17 +45,20 @@ table {
     border-spacing: 0;
 }
 
-/* Au-dessus css d'initialisation. */
+/* Au-dessus css d'initialisation. Ne pas modifier. */
 
+/* Berlin sans FB est la police d'écriture de notre fichier. Pensez à la préciser. */
 body {
     font-family: 'Berlin sans FB';
-    overflow: hidden;
+    overflow: hidden;/* Ce paramètre va sûrement être modifié ultérieurement. */
 }
 
+/* Le css de #fond est géré en js. */
 #fond{
     position: absolute;
 }
 
+/* Css du champ où l'on tappe son mot de passe. */
 input{
     position: absolute;
     width: 500px;
@@ -70,10 +74,12 @@ input{
     text-align: center;
 }
 
+/* Permet d'enlever le cadre bleu par défaut qui apparaît quand la personne rentre son mot de passe. */
 input:focus{
     outline: none;
 }
 
+/* Css du bouton pour valider son mot de passe. */
 button{
     position: absolute;
     width: 100px;
@@ -87,6 +93,7 @@ button{
     text-align: center;
 }
 
+/* Css du texte en bas de page. */
 footer {
     position: absolute;
     text-align: center;

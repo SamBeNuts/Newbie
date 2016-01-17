@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
+	<head> <!-- Chaque page à le même head, sauf le titre qui change. -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="author" content="Samuel Lager">
 		<link rel="stylesheet" href="css/style.css" />
@@ -10,8 +10,8 @@
   </head>
 	<body>
 		<script>
-			var mysql      = require('mysql');
-			var connection = mysql.createConnection({
+			var mysql      = require('mysql'); /* Va chercher le module mysql de node.js. */
+			var connection = mysql.createConnection({ /* Connection à la BDD. */
 			host     : 'localhost',
 			user     : 'root',
 			password : '',
@@ -19,14 +19,14 @@
 			});
 			connection.connect();
 			var $_GET = {};
-			document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+			document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () { /* Récupère le mot de passe dans l'url. */
 			    function decode(s) {
 			        return decodeURIComponent(s.split("+").join(" "));
 			    }
 			    $_GET[decode(arguments[1])] = decode(arguments[2]);
 			});
-			connection.query('SELECT * from profil WHERE password = ?', [$_GET["password"]], function(err, rows, fields) {
-				if(!err && rows[0]!=undefined){
+			connection.query('SELECT * from profil WHERE password = ?', [$_GET["password"]], function(err, rows, fields) { /* Sélectionne l'utilisateur. */
+				if(!err && rows[0]!=undefined){ /* Si l'utilisateur existe, on affiche ses données. */
 					document.write(rows[0].name, " ", rows[0].lastname, " (", rows[0].class, ")<br>");
 					document.write("Age : ", rows[0].age, " ans<br>")
 					if(rows[0].mail!=""){
@@ -35,7 +35,7 @@
 					if(rows[0].tel!=""){
 						document.write("Numéro de téléphone : ", rows[0].tel)
 					}
-				}else{
+				}else{ /* Si l'utilisateur n'existe pas, on affiche un message et on le redirige. Ce système est à améliorer afin de l'intégrer dans index.php et éviter la redirection. */
 					document.write("Compte inexistant. Vous allez être redirigés.");
 					setTimeout("window.location.href='index.php'", 1500);
 				}
