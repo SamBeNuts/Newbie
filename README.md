@@ -65,4 +65,4 @@ Vous pouvez donc le remplacer par ce code :
 
 #### Contact
 Si vous rencontrez un problème ou si vous avez des questions :
-* Mon mail : `sambenuts.contact@gmail.com`
+* Notre mail : `sambenuts.contact@gmail.com`
