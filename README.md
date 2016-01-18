@@ -4,7 +4,7 @@
 [TRELLO](https://trello.com/b/g2MpFDzA)
 
 ## Règles à suivre
-> Pour travailler sur l'OS, vous devez en premier lieu avoir [WAMP](http://www.wampserver.com/), ou un équivalent, et ensuite suivre la partie `BDD`.
+> Pour travailler sur l'OS, vous devez en premier lieu, travailler avec le système d'exploitation `Windows` et avoir [WAMP](http://www.wampserver.com/) d'installé (ou un équivalent), ensuite vous devez suivre la partie `BDD`.
 
 - Les seuls fichiers que vous avez le droit de modifier sont ceux du dossier `app`
   - Exception le fichier `package.json` qui est un fichier personnel (voir la partie `package.json` pour plus d'informations), vous pouvez donc le modifier à votre guise. En cas de problèmes, retéléchargez-le. Par contre, faites très attention à ne jamais `commit` ce fichier.
@@ -16,7 +16,8 @@
 1. Commencez par créer une base de données `newbie` dans phpmyadmin avec `utf8_unicode_ci` comme interclassement
 2. [Téléchargez ce fichier](https://drive.google.com/open?id=0B9r0GJvYkipNa0tKSy1sRzNWUHM)
 3. Une fois le fichier téléchargé, allez dans votre base de données et cliquez sur `Importer`, puis choisissez le fichier `profil.sql` et faites `exécuter`
-4. Votre base de données est maintenant opérationnelle
+4. Vérifiez maintenant que votre mot de passe est vide (que vous n'avez pas de mot de passe)
+5. Votre base de données est maintenant opérationnelle
 
 > Votre base de données est personnelle, vous pouvez donc la modifier à votre guise. En cas de problèmes, vous pouvez la supprimer et refaire les étapes ci-dessus.
 
