@@ -27,13 +27,16 @@
 			});
 			connection.query('SELECT * from profil WHERE password = ?', [$_GET["password"]], function(err, rows, fields) { /* Sélectionne l'utilisateur. */
 				if(!err && rows[0]!=undefined){ /* On revérifie que l'utilisateur existe et on affiche ses données. */
+					if(rows[0].rang===0){
+						setTimeout("window.location.href='create.php?password='+$_GET['password']", 0);
+					}
 					document.write(rows[0].name, " ", rows[0].lastname, " (", rows[0].class, ")<br>");
-					document.write("Age : ", rows[0].age, " ans<br>")
+					document.write("Age : ", rows[0].age, " ans<br>");
 					if(rows[0].mail!=""){
-						document.write("Mail : ", rows[0].mail, "<br>")
+						document.write("Mail : ", rows[0].mail, "<br>");
 					}
 					if(rows[0].tel!=""){
-						document.write("Numéro de téléphone : ", rows[0].tel)
+						document.write("Numéro de téléphone : ", rows[0].tel);
 					}
 				}else{ /* Dans le cas où l'utilisateur n'existe pas mais arrive quand même sur cette page, on affiche un message et on le redirige. */
 					document.write("Compte inexistant. Vous allez être redirigés.");

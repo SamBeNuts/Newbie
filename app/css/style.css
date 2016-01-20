@@ -53,17 +53,23 @@ body {
     overflow: hidden;/* Ce paramètre va sûrement être modifié ultérieurement. */
 }
 
-/* Le css de #fond est géré en js. */
-#fond{
+/* Css du texte en bas de page. */
+footer {
     position: absolute;
-    min-width:100%; /* Pour que l'image prenne tout l'écran. */
-    min-height:100%; /* Pour que l'image prenne tout l'écran. */
+    text-align: center;
+    font-size: 13px;
+    bottom: 10px;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    color: white;
 }
 
-/* Le css de l'image de #fond. */
-#fond img{
-    min-width:100%; /* Pour que l'image prenne tout l'écran. */
-    min-height:100%; /* Pour que l'image prenne tout l'écran. */
+/*Css de la page de connexion */
+
+/* Le css de #fond est géré en js. */
+#fond_connect{
+    position: absolute;
 }
 
 /* Css du cadre contenant l'espace de connexion. */
@@ -161,13 +167,11 @@ button:focus{
     color: rgb(255, 50, 50);;
 }
 
-/* Css du texte en bas de page. */
-footer {
+/*Css de la page de création de compte */
+
+#fond_create{
     position: absolute;
-    text-align: center;
-    font-size: 13px;
-    bottom: 10px;
-    width: 500px;
-    left: 50%;
-    margin-left: -250px;
+    width:100%; /* Pour que l'image prenne tout l'écran. */
+    height:100%; /* Pour que l'image prenne tout l'écran. */
+    background-color: black;
 }

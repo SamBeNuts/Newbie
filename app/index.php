@@ -7,10 +7,15 @@
 		<link rel="icon" type="image/png" href="images/favicon.png" />
     <title>Newbie - Connexion</title>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+		<audio loop autoplay>
+			<source src="images/bo.wav">
+		</audio>
   </head>
 	<body>
-		<div id="fond"> <!-- Arrière-plan de la page. -->
-			<img src="images/background.jpg" />
+		<div id="fond_connect"> <!-- Arrière-plan de la page. -->
+			<script>
+				document.write('<img id="img_fond" src="images/background'+Math.floor((Math.random() * 4) + 1)+'.jpg" />');
+			</script>
 		</div>
 		<div id="cadre">
 			<div id="logo"> <!-- Arrière-plan de la page. -->
@@ -48,17 +53,23 @@
 			});
 			};
 			if ($_GET["done"]=="2"){ /* On affiche le message d'erreur. */
-				document.write("<a id='erreur'>Compte inexistant.</a>")
+				document.write("<a id='erreur'>Compte inexistant.</a>");
 			};
 			connection.end();
 		</script>
 		<script> /* Script afin de centrer #fond de manière dynamique. */
 		window.onresize=resize;
-		document.getElementById("fond").style.top=window.innerHeight/2-document.getElementById("fond").offsetHeight/2+"px";
-		document.getElementById("fond").style.left=window.innerWidth/2-document.getElementById("fond").offsetWidth/2+"px";
+		window.onload=resize;
 		function resize(){
-			document.getElementById("fond").style.top=window.innerHeight/2-document.getElementById("fond").offsetHeight/2+"px";
-			document.getElementById("fond").style.left=window.innerWidth/2-document.getElementById("fond").offsetWidth/2+"px";
+			if (2*window.innerHeight<=window.innerWidth){
+				document.getElementById("img_fond").style.width=window.innerWidth+"px";
+				document.getElementById("fond_connect").style.top=window.innerHeight/2-document.getElementById("fond_connect").offsetHeight/2+"px";
+				document.getElementById("fond_connect").style.left=window.innerWidth/2-document.getElementById("fond_connect").offsetWidth/2+"px";
+			}else{
+				document.getElementById("img_fond").style.height=window.innerHeight+"px";
+				document.getElementById("fond_connect").style.top=window.innerHeight/2-document.getElementById("fond_connect").offsetHeight/2+"px";
+				document.getElementById("fond_connect").style.left=window.innerWidth/2-document.getElementById("fond_connect").offsetWidth/2+"px";
+			}
 		}
 		</script>
 	</body>
