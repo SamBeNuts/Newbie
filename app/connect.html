@@ -1,0 +1,31 @@
+<div id="cadre">
+	<div id="logo"> <!-- Arrière-plan de la page. -->
+		<img src="images/logo_transparent.png" />
+	</div>
+	<input id="pass" type="text" autocomplete="off" name="password" placeholder="••••••••" maxlength="8" onchange="verif()"/>
+	<a id='erreur'></a>
+</div>
+<footer>©2016 Newbie, Nutts Inc. -  <b><></b> with <b>♥</b> by <b>Newbie Team</b></footer> <!-- Texte de bas de page. -->
+<script> /* Script afin de centrer #fond de manière dynamique. */
+function verif(){
+	if (document.getElementById('pass').value.length==8){
+		var mysql      = require('mysql'); /* Va chercher le module mysql de node.js. */
+		var connection = mysql.createConnection({ /* Connection à la BDD. */
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'Newbie'
+		});
+		connection.connect();
+		connection.query('SELECT * from profil WHERE password = ?', document.getElementById('pass').value, function(err, rows, fields) { /* Sélectionne l'utilisateur. */
+			if(!err && rows[0]!=undefined){ /* Si l'utilisateur existe, on le dirige vers son profil. */
+				jQuery.data(document.body,'password', document.getElementById('pass').value);
+				ajax_menu();
+			}else{
+				document.getElementById('erreur').innerHTML = "Compte inexistant.";
+			}
+		});
+	connection.end();
+	}
+}
+</script>

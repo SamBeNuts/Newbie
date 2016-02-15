@@ -1,0 +1,33 @@
+<p id="name"></p>
+<p id="age"></p>
+<p id="mail"></p>
+<p id="tel"></p>
+<script>
+	var mysql      = require('mysql'); /* Va chercher le module mysql de node.js. */
+	var connection = mysql.createConnection({ /* Connection à la BDD. */
+	host     : 'localhost',
+	user     : 'root',
+	password : '',
+	database : 'Newbie'
+	});
+	connection.connect();
+	connection.query('SELECT * from profil WHERE password = ?', $('body').data('password'), function(err, rows, fields) { /* Sélectionne l'utilisateur. */
+		if(!err && rows[0]!=undefined){ /* On revérifie que l'utilisateur existe et on affiche ses données. */
+			if(rows[0].rang===0){
+				setTimeout("window.location.href='create.html?password='+$_GET['password']", 0);
+			}
+			document.getElementById('name').innerHTML = rows[0].name + " " + rows[0].lastname + " (" + rows[0].class + ")<br>";
+			document.getElementById('age').innerHTML = "Age : " + rows[0].age + " ans<br>";
+			if(rows[0].mail!=""){
+				document.getElementById('mail').innerHTML = "Mail : " + rows[0].mail + "<br>";
+			}
+			if(rows[0].tel!=""){
+				document.getElementById('tel').innerHTML = "Numéro de téléphone : " + rows[0].tel;
+			}
+		}else{ /* Dans le cas où l'utilisateur n'existe pas mais arrive quand même sur cette page, on affiche un message et on le redirige. */
+			document.getElementById('name').innerHTML = "Compte inexistant. Vous allez être redirigés.";
+			ajax_connect();
+		}
+	});
+	connection.end();
+</script>

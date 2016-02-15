@@ -28,7 +28,7 @@ Ce fichier est celui qui gère la fenêtre de l'OS. Lors de la première ouvertu
   "name": "Newbie",
   "version": "0.1.0",
   "description": "Newbie OS",
-  "main": "app/index.php",
+  "main": "app/index.html",
   "window": {
     "toolbar": false,
     "fullscreen": true,

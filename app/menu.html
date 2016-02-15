@@ -1,0 +1,308 @@
+<div id="profil">
+  <img id="avatar" data-at2="default" src="" />
+  <p id="name"></p>
+  <p id="pts"></p>
+  <img id="star" src="images/star.png" />
+</div>
+<div id="icon_1">
+  <div class="icon_game" id="icon_game_0" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_1" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_2" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_3" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_4" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_5" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_6" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_7" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_8" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_9" data-at="default"><img src="" /><p></p></div>
+  <div class="icon_game" id="icon_game_10" data-at="default"><img src="images/more.jpg" /></div>
+</div>
+<script>
+	var mysql      = require('mysql'); /* Va chercher le module mysql de node.js. */
+	var connection = mysql.createConnection({ /* Connection à la BDD. */
+	host     : 'localhost',
+	user     : 'root',
+	password : '',
+	database : 'Newbie'
+	});
+	connection.connect();
+	connection.query('SELECT * from profil WHERE password = ?', $('body').data('password'), function(err, rows, fields) { /* Sélectionne l'utilisateur. */
+		if(!err && rows[0]!=undefined){ /* On revérifie que l'utilisateur existe et on affiche ses données. */
+			document.getElementById('name').innerHTML = rows[0].name + " " + rows[0].lastname + " (" + rows[0].class + ")";
+      document.getElementById('pts').innerHTML = rows[0].pts;
+      $('#avatar').attr('src',rows[0].avatar)
+		}else{ /* Dans le cas où l'utilisateur n'existe pas mais arrive quand même sur cette page, on affiche un message et on le redirige. */
+			document.getElementById('name').innerHTML = "Compte inexistant. Vous allez être redirigés.";
+			ajax_connect();
+		}
+	});
+	connection.end();
+</script>
+<script>
+  function randomInt(mini, maxi)
+  {
+     var nb = mini + (maxi+1-mini)*Math.random();
+     return Math.floor(nb);
+  }
+  Array.prototype.shuffle = function(n)
+  {
+     if(!n)
+          n = this.length;
+     if(n > 1)
+     {
+          var i = randomInt(0, n-1);
+          var tmp = this[i];
+          this[i] = this[n-1];
+          this[n-1] = tmp;
+          this.shuffle(n-1);
+     }
+  }
+  if ((window.innerHeight-220-20)/3<(window.innerWidth-40-50)/6){
+    var taille_icon=((window.innerHeight-220-20)/3);
+  }else{
+    var taille_icon=((window.innerWidth-40-50)/6);
+  }
+  $('#icon_1').css("height",(3*taille_icon)+20+"px");
+  $('#icon_1').css("width",(6*taille_icon)+50+"px");
+  $('#icon_1').css("top",((window.innerHeight/2)-(document.getElementById("icon_1").offsetHeight/2))+87.5+"px");
+  $('#icon_1').css("left",(window.innerWidth/2)-(document.getElementById("icon_1").offsetWidth/2)+"px");
+  $('#avatar').css("left",parseInt($("#icon_1").css("left"))+"px");
+  $('#name').css("left",parseInt($("#icon_1").css("left"))+170+"px");
+  $('#pts').css("left",parseInt($("#icon_1").css("left"))+200+"px");
+  $('#star').css("left",parseInt($("#icon_1").css("left"))+170+"px");
+  var double=((taille_icon*2)+10);
+  var simple=taille_icon;
+  var game=['Spelunky','Asterix','Donkey Kong','Mario','Nuclear Throne','Rogue Legacy','Roi Lion','Save The Baby','Shovel Knight','Spirou','Super Meat Boy','Tintin','Towerfall Ascension','VVVVVV','Aladdin'];
+  game.shuffle();
+  var n=Math.floor((Math.random() * 2) + 1);
+  $('.icon_game').css("width",simple+"px");
+  $('.icon_game').css("height",simple+"px");
+  var menu_pos=[
+    [[0,0,2,1],[2,0,1,2],[3,0,1,1],[4,0,2,1],[0,1,1,2],[1,1,1,1],[3,1,1,2],[4,1,2,1],[1,2,2,1],[4,2,1,1],[5,2,1,1]],
+    [[0,0,2,1],[2,0,2,1],[4,0,2,1],[0,1,1,1],[1,1,2,1],[3,1,1,2],[4,1,1,2],[5,1,1,1],[0,2,2,1],[2,2,1,1],[5,2,1,1]]
+  ];
+  var nb=0;
+  function position(pos){
+    var y=0;
+    var game1 = [];
+    while (y<10) {
+      if (nb==game.length){
+        nb=0;
+      }
+      game1.push(game[nb]);
+      nb += 1;
+      y += 1;
+    }
+    for (var i in game1){
+      $('#icon_game_' + i + ' img').attr("src","images/menu/"+game1[i]+".jpg");
+      $('#icon_game_' + i + ' img').css("width",double+"px");
+      $('#icon_game_' + i + ' img').css("height",double+"px");
+      $('#icon_game_' + i + ' p').html(game1[i]);
+      $('#icon_game_' + i + ' p').css("max-width",taille_icon-28+"px");
+    }
+    h=menu_pos[pos]
+    for (var i in h){
+      if (i!=10){
+        $('#icon_game_'+i).css("top",(taille_icon+10)*h[i][1]+"px");
+        $('#icon_game_'+i).css("left",(taille_icon+10)*h[i][0]+"px");
+        if (h[i][2]==1){
+          $('#icon_game_'+i).css("width",simple+"px");
+        }else{
+          $('#icon_game_'+i).css("width",double+"px");
+        }
+        if (h[i][3]==1){
+          $('#icon_game_'+i).css("height",simple+"px");
+        }else{
+          $('#icon_game_'+i).css("height",double+"px");
+        }
+      }else {
+        $('#icon_game_10').css("top",(taille_icon+10)*2+"px");
+        $('#icon_game_10').css("left",(taille_icon+10)*5+"px");
+        $('#icon_game_10 img').css("width",simple+"px");
+        $('#icon_game_10 img').css("height",simple+"px");
+      }
+    }
+    $('[data-at="active"]').attr("data-at","default");
+    $('#icon_game_0').attr("data-at","active");
+  }
+  position(n-1);
+  var keys = {};
+  var k=0;
+  $(window).on("keyup keydown", function (e) {
+      e = e || event;
+      keys[e.keyCode] = e.type === 'keydown';
+      if ($('#avatar').attr('data-at2')!='active') {
+        var l = parseInt($('[data-at="active"]').attr('id').substr(-1*($('[data-at="active"]').attr('id').length-10), ($('[data-at="active"]').attr('id').length-10)));
+      }
+      var m = n-1;
+      if (keys[13] && $('#avatar').attr('data-at2')=='active') {
+	        window.location.reload();
+	        keys = {};
+	        return false;
+	    }
+      if (keys[37]){
+        for (var i in menu_pos[n-1]){
+          if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]-1 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]) {
+            $('[data-at="active"]').attr("data-at","default");
+            $("#icon_game_"+i).attr("data-at","active");
+            joystick.play();
+            { break; }
+          }
+          if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]-1 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]-1 && menu_pos[n-1][i][3]==2) {
+            $('[data-at="active"]').attr("data-at","default");
+            $("#icon_game_"+i).attr("data-at","active");
+            joystick.play();
+            { break; }
+          }
+          if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]-2 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1] && menu_pos[n-1][i][2]==2) {
+            $('[data-at="active"]').attr("data-at","default");
+            $("#icon_game_"+i).attr("data-at","active");
+            joystick.play();
+            { break; }
+          }
+        }
+        keys = {};
+        return false;
+      }
+      if (keys[39]){
+        if (menu_pos[n-1][l][2]==1) {
+          for (var i in menu_pos[n-1]){
+            if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]+1 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]) {
+              $('[data-at="active"]').attr("data-at","default");
+              $("#icon_game_"+i).attr("data-at","active");
+              joystick.play();
+              { break; }
+            }
+            if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]+1 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]-1 && menu_pos[n-1][i][3]==2) {
+              $('[data-at="active"]').attr("data-at","default");
+              $("#icon_game_"+i).attr("data-at","active");
+              joystick.play();
+              { break; }
+            }
+          }
+        }else {
+          for (var i in menu_pos[n-1]){
+            if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]+2 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]-1 && menu_pos[n-1][i][3]==2) {
+              $('[data-at="active"]').attr("data-at","default");
+              $("#icon_game_"+i).attr("data-at","active");
+              joystick.play();
+              { break; }
+            }
+            if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]+2 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]) {
+              $('[data-at="active"]').attr("data-at","default");
+              $("#icon_game_"+i).attr("data-at","active");
+              joystick.play();
+              { break; }
+            }
+          }
+        }
+        keys = {};
+        return false;
+      }
+      if (keys[38]){
+        if (menu_pos[n-1][l][0]==0 && menu_pos[n-1][l][1]==0) {
+          $('[data-at="active"]').attr("data-at","default");
+          $("#avatar").attr("data-at2","active");
+          joystick.play();
+        }
+        for (var i in menu_pos[n-1]){
+          if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0] && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]-1) {
+            $('[data-at="active"]').attr("data-at","default");
+            $("#icon_game_"+i).attr("data-at","active");
+            joystick.play();
+            { break; }
+          }
+          if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]-1 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]-1 && menu_pos[n-1][i][2]==2) {
+            $('[data-at="active"]').attr("data-at","default");
+            $("#icon_game_"+i).attr("data-at","active");
+            joystick.play();
+            { break; }
+          }
+          if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0] && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]-2 && menu_pos[n-1][i][3]==2) {
+            $('[data-at="active"]').attr("data-at","default");
+            $("#icon_game_"+i).attr("data-at","active");
+            joystick.play();
+            { break; }
+          }
+        }
+        keys = {};
+        return false;
+      }
+      if (keys[40]){
+        if ($('#avatar').attr('data-at2')=='active') {
+          $('#avatar').attr("data-at2","default");
+          $("#icon_game_0").attr("data-at","active");
+          joystick.play();
+        }else{
+          if (menu_pos[n-1][l][3]==1) {
+            for (var i in menu_pos[n-1]){
+              if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0] && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]+1) {
+                $('[data-at="active"]').attr("data-at","default");
+                $("#icon_game_"+i).attr("data-at","active");
+                joystick.play();
+                { break; }
+              }
+              if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]-1 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]+1 && menu_pos[n-1][i][2]==2) {
+                $('[data-at="active"]').attr("data-at","default");
+                $("#icon_game_"+i).attr("data-at","active");
+                joystick.play();
+                { break; }
+              }
+            }
+          }else {
+            for (var i in menu_pos[n-1]){
+              if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0] && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]+2) {
+                $('[data-at="active"]').attr("data-at","default");
+                $("#icon_game_"+i).attr("data-at","active");
+                joystick.play();
+                { break; }
+              }
+              if (menu_pos[n-1][i][0]==menu_pos[n-1][l][0]-1 && menu_pos[n-1][i][1]==menu_pos[n-1][l][1]+2 && menu_pos[n-1][i][2]==2) {
+                $('[data-at="active"]').attr("data-at","default");
+                $("#icon_game_"+i).attr("data-at","active");
+                joystick.play();
+                { break; }
+              }
+            }
+          }
+        }
+        keys = {};
+        return false;
+      }
+      if (keys[13] && menu_pos[n-1][l]==menu_pos[n-1][menu_pos[n-1].length-1]){
+        n=Math.floor((Math.random() * 2) + 1);
+        position(n-1);
+        keys = {};
+        selection.play();
+        return false;
+      }
+	    if (keys[13] && $('[data-at="active"] p').html()=='Shovel Knight') {
+	        var exec = require('child_process').exec;
+	        exec(path_games + 'Shovel_Knight/ShovelKnight.exe', {cwd: path_games + 'Shovel_Knight/'});
+	        selection.play();
+	        keys = {};
+	        return false;
+	    }
+			if (keys[13] && $('[data-at="active"] p').html()=='Spelunky') {
+	        var exec = require('child_process').exec;
+	        exec(path_games + 'Spelunky_Classic/Spelunky.exe', {cwd: path_games + 'Spelunky_Classic/'});
+	        selection.play();
+	        keys = {};
+	        return false;
+	    }
+			if (keys[13] && $('[data-at="active"] p').html()=='Towerfall Ascension') {
+	        var exec = require('child_process').exec;
+	        exec(path_games + 'Tw_As/TowerFall.exe', {cwd: path_games + 'Tw_As/'});
+	        selection.play();
+	        keys = {};
+	        return false;
+	    }
+			if (keys[13] && $('[data-at="active"] p').html()=='VVVVVV') {
+	        var exec = require('child_process').exec;
+	        exec(path_games + 'vvv/vvvvvv_demo', {cwd: path_games + 'vvv/'});
+	        selection.play();
+	        keys = {};
+	        return false;
+	    }
+  });
+</script>

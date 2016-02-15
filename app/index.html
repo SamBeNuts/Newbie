@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head> <!-- Chaque page à le même head, sauf le titre qui change. -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="author" content="Samuel Lager">
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="icon" type="image/png" href="images/favicon.png" />
+    <title>Newbie</title>
+  </head>
+	<body data-password="00000000">
+		<audio loop autoplay id='audio'><source src='images/bo.wav'></audio>
+		<audio id='joystick'><source src='images/joystick.wav'></audio>
+		<audio id='selection'><source src='images/selection.wav'></audio>
+		<div id="fond_connect"> <!-- Arrière-plan de la page. -->
+			<img class="" id="img_fond" src=""/>
+			<script>
+				document.getElementById('img_fond').src = 'images/background/background'+Math.floor((Math.random() * 4) + 1)+'.jpg';
+			</script>
+		</div>
+		<div id="swithcontenu">
+			<div id="cadre">
+				<div id="logo"> <!-- Arrière-plan de la page. -->
+					<img src="images/logo_transparent.png" />
+				</div>
+				<input id="pass" type="text" autocomplete="off" name="password" placeholder="••••••••" maxlength="8" onchange="verif()"/>
+				<a id='erreur'></a>
+			</div>
+			<footer>©2016 Newbie, Nutts Inc. -  <b><></b> with <b>♥</b> by <b>Newbie Team</b></footer> <!-- Texte de bas de page. -->
+			<script> /* Script afin de centrer #fond de manière dynamique. */
+			function verif(){
+				if (document.getElementById('pass').value.length==8){
+					var mysql      = require('mysql'); /* Va chercher le module mysql de node.js. */
+					var connection = mysql.createConnection({ /* Connection à la BDD. */
+					host     : 'localhost',
+					user     : 'root',
+					password : '',
+					database : 'Newbie'
+					});
+					connection.connect();
+					connection.query('SELECT * from profil WHERE password = ?', document.getElementById('pass').value, function(err, rows, fields) { /* Sélectionne l'utilisateur. */
+						if(!err && rows[0]!=undefined){ /* Si l'utilisateur existe, on le dirige vers son profil. */
+							document.body.setAttribute('data-password',document.getElementById('pass').value);
+							ajax_menu();
+						}else{
+							document.getElementById('erreur').innerHTML = "Compte inexistant.";
+						}
+					});
+				connection.end();
+				}
+			}
+			</script>
+		</div>
+		<div id="black" data-visibility="default"></div>
+	</body>
+	<script>
+	window.onfocus=function(){
+		audio.play();
+		$('body').fadeIn(1000);
+	}
+	window.onblur=function(){
+		audio.pause();
+		$('body').fadeOut(1000);
+	}
+	audio.volume=0.3;
+	selection.volume=0.5;
+	window.onresize=resize;
+	window.onload=resize;
+	function resize(){
+		if (2*window.innerHeight<=window.innerWidth){
+			$('#img_fond').css("width",window.innerWidth+"px");
+			$('#fond_connect').css("top",window.innerHeight/2-document.getElementById("fond_connect").offsetHeight/2+"px");
+			$('#fond_connect').css("left",window.innerWidth/2-document.getElementById("fond_connect").offsetWidth/2+"px");
+		}else{
+			$('#img_fond').css("height",window.innerHeight+"px");
+			$('#fond_connect').css("top",window.innerHeight/2-document.getElementById("fond_connect").offsetHeight/2+"px");
+			$('#fond_connect').css("left",window.innerWidth/2-document.getElementById("fond_connect").offsetWidth/2+"px");
+		}
+	}
+	</script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script>
+	var path_games='C:/wamp/www/GitHub/Newbie/app/games/';
+	/* Fonction de chargement ajax simple */
+	function ajax_profil(){
+	        $("#swithcontenu").load("profil.html");
+	}
+	function ajax_menu(){
+	        $('#img_fond').attr("class","img_fond_active");
+	        $("#swithcontenu").fadeOut(0);
+	        $("#swithcontenu").load("menu.html");
+	        $("#swithcontenu").fadeIn(3000);
+	}
+	function ajax_connect(){
+	        $('#img_fond').attr("class","img_fond_passive");
+	        $("#swithcontenu").load("connect.html");
+	}
+	/* Une fois la page chargée */
+	$(document).ready(function(){
+	        //Application du chargement ajax simple sur tous les liens se trouvant dans le conteneur "menu1"
+	        $("#test").click(function(){
+	                ajax_profil();
+	                return false;
+	        });
+	});
+
+	var keys = {};
+	$(window).on("keyup keydown", function (e) {
+	    e = e || event;
+	    keys[e.keyCode] = e.type === 'keydown';
+	    if (keys[69]) {
+	        ajax_menu();
+	        keys = {};
+	        return false;
+	    }
+	});
+
+	//Touches clavier
+	//KEY_DOWN	= 40;
+	//KEY_UP		= 38;
+	//KEY_LEFT	= 37;
+	//KEY_RIGHT	= 39;
+	//KEY_END		= 35;
+	//KEY_BEGIN	= 36;
+	//KEY_BACK_TAB 	= 8;
+	//KEY_TAB				= 9;
+	//KEY_SH_TAB  	= 16;
+	//KEY_ENTER			= 13;
+	//KEY_ESC				= 27;
+	//KEY_SPACE			= 32;
+	//KEY_DEL				= 46;
+	//KEY_A		= 65;
+	//KEY_B		= 66;
+	//KEY_C		= 67;
+	//KEY_D		= 68;
+	//KEY_E		= 69;
+	//KEY_F		= 70;
+	//KEY_G		= 71;
+	//KEY_H		= 72;
+	//KEY_I		= 73;
+	//KEY_J		= 74;
+	//KEY_K		= 75;
+	//KEY_L		= 76;
+	//KEY_M		= 77;
+	//KEY_N		= 78;
+	//KEY_O		= 79;
+	//KEY_P		= 80;
+	//KEY_Q		= 81;
+	//KEY_R		= 82;
+	//KEY_S		= 83;
+	//KEY_T		= 84;
+	//KEY_U		= 85;
+	//KEY_V		= 86;
+	//KEY_W		= 87;
+	//KEY_X		= 88;
+	//KEY_Y		= 89;
+	//KEY_Z		= 90;
+	//KEY_PF1		= 112;
+	//KEY_PF2		= 113;
+	//KEY_PF3		= 114;
+	//KEY_PF4		= 115;
+	//KEY_PF5		= 116;
+	//KEY_PF6		= 117;
+	//KEY_PF7		= 118;
+	//KEY_PF8		= 119;
+	</script>
+</html>
