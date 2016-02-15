@@ -1,12 +1,12 @@
 {
   "name": "Newbie",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Newbie OS",
-  "main": "app/index.php",
+  "main": "app/index.html",
   "window": {
-    "toolbar": false,
-    "fullscreen": true,
-    "frame": false,
+    "toolbar": true,
+    "fullscreen": false,
+    "frame": true,
     "icon": "app/images/favicon.png"
   },
   "dependencies": {
