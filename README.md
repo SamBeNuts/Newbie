@@ -14,7 +14,7 @@
 
 ### BDD
 1. Commencez par créer une base de données `newbie` dans phpmyadmin avec `utf8_unicode_ci` comme interclassement
-2. [Téléchargez ce fichier](https://drive.google.com/open?id=0B9r0GJvYkipNa0tKSy1sRzNWUHM)
+2. [Téléchargez ce fichier](https://drive.google.com/open?id=0B9r0GJvYkipNYzhTa09fSXJMMU0)
 3. Une fois le fichier téléchargé, allez dans votre base de données et cliquez sur `Importer`, puis choisissez le fichier `profil.sql` et faites `exécuter`
 4. Vérifiez maintenant que votre mot de passe est vide (que vous n'avez pas de mot de passe)
 5. Votre base de données est maintenant opérationnelle
@@ -26,13 +26,13 @@ Ce fichier est celui qui gère la fenêtre de l'OS. Lors de la première ouvertu
 ```
 {
   "name": "Newbie",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Newbie OS",
   "main": "app/index.html",
   "window": {
-    "toolbar": false,
-    "fullscreen": true,
-    "frame": false,
+    "toolbar": true,
+    "fullscreen": false,
+    "frame": true,
     "icon": "app/images/favicon.png"
   },
   "dependencies": {
@@ -45,9 +45,9 @@ Vous pouvez donc le remplacer par ce code :
 ```
 {
   "name": "Newbie",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Newbie OS",
-  "main": "app/index.php",
+  "main": "app/index.html",
   "window": {
     "toolbar": true,
     "fullscreen": false,
