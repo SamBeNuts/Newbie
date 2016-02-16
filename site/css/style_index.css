@@ -1,0 +1,182 @@
+/* Berlin sans FB est la police d'écriture de notre fichier. Pensez à la préciser. */
+body {
+  font-family: 'Berlin sans FB';
+  overflow: hidden;/* Ce paramètre va sûrement être modifié ultérieurement. */
+}
+
+/* Css du texte en bas de page. */
+footer {
+  position: absolute;
+  text-align: center;
+  font-size: 13px;
+  bottom: 10px;
+  width: 500px;
+  left: 50%;
+  margin-left: -250px;
+  color: black;
+}
+
+#loading_page{
+  position: absolute;
+  top: -100%;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  animation: cadre 7s;
+  -webkit-animation: cadre 7s;
+}
+
+@-webkit-keyframes cadre {
+    0%   {opacity: 1; top: 0px;}
+    85.714%   {opacity: 1;}
+    99.999%{top:0px;}
+    100% {opacity: 0; top: -100%;}
+}
+
+@keyframes cadre {
+    0%   {opacity: 1; top: 0px;}
+    85.714%   {opacity: 1;}
+    99.999%{top:0px;}
+    100% {opacity: 0; top: -100%;}
+}
+
+#img_fond{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+#cadre_gauche{
+  position: absolute;
+  width: 20px;
+  background: black;
+  top: 0px;
+  left: 50%;
+  height: 100%;
+  animation: cadre_gauche 1s;
+  -webkit-animation: cadre_gauche 1s;
+}
+
+@-webkit-keyframes cadre_gauche {
+  0%   {height: 0%; top: 100%;}
+  100% {height: 100%; top: 0px;}
+}
+
+@keyframes cadre_gauche {
+  0%   {height: 0%; top: 100%;}
+  100% {height: 100%; top: 0px;}
+}
+
+#cadre_haut{
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  background: black;
+  top: 50%;
+  left: 0px;
+  margin-top: -92px;
+  animation: cadre_haut 3s;
+  -webkit-animation: cadre_haut 3s;
+}
+
+@-webkit-keyframes cadre_haut {
+  0%   {width: 0%;}
+  33.333%   {width: 0%;}
+  100% {width: 100%;}
+}
+
+@keyframes cadre_haut {
+  0%   {width: 0%;}
+  33.333%   {width: 0%;}
+  100% {width: 100%;}
+}
+
+#cadre_droite{
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  background: black;
+  top: 0px;
+  left: 50%;
+  margin-left: 318px;
+  animation: cadre_droite 4s;
+  -webkit-animation: cadre_droite 4s;
+}
+
+@-webkit-keyframes cadre_droite {
+  0%   {height: 0%;}
+  75%   {height: 0%;}
+  100% {height: 100%;}
+}
+
+@keyframes cadre_droite {
+  0%   {height: 0%;}
+  75%   {height: 0%;}
+  100% {height: 100%;}
+}
+
+#cadre_bas{
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  background: black;
+  top: 50%;
+  left: 0px;
+  margin-top: 72px;
+  animation: cadre_bas 6s;
+  -webkit-animation: cadre_bas 6s;
+}
+
+@-webkit-keyframes cadre_bas {
+  0%   {width: 0%; left: 100%;}
+  66.666%   {width: 0%; left: 100%;}
+  100% {width: 100%; left: 0px;}
+}
+
+@keyframes cadre_bas {
+  0%   {width: 0%; left: 100%;}
+  66.666%   {width: 0%; left: 100%;}
+  100% {width: 100%; left: 0px;}
+}
+
+#chargement{
+  position: absolute;
+  width: 636px;
+  height:144px;
+  border-top: 20px white solid;
+  border-bottom: 20px white solid;
+  border-left: 20px white solid;
+  border-right: 20px white solid;
+  top: 50%;
+  left: 50%;
+  margin-top: -72px;
+  margin-left: -318px;
+}
+
+#logo{
+  position: absolute;
+  width: 40vw;
+  left: 50%;
+  top: 50%;
+}
+
+.wrapper {
+    opacity: 1;
+    animation: wrapper 8s;
+    -webkit-animation: wrapper 8s;
+}
+
+@-webkit-keyframes wrapper {
+    0%   {opacity: 0;}
+    87.5%   {opacity: 0;}
+    100% {opacity: 1;
+}
+
+@keyframes wrapper {
+    0%   {opacity: 0;}
+    87.5%   {opacity: 0;}
+    100% {opacity: 1;
+}
