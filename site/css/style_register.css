@@ -82,6 +82,7 @@ body {
   font-weight: bold;
   font-size: 35px;
   color: rgba(0, 0, 0, 0.5);
-  cursor: default;
+  cursor: pointer;
   text-align: center;
+  text-decoration: none;
 }

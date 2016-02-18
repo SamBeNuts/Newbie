@@ -37,9 +37,9 @@
 					database : 'Newbie'
 					});
 					connection.connect();
-					connection.query('SELECT * from profil WHERE password = ?', document.getElementById('pass').value, function(err, rows, fields) { /* Sélectionne l'utilisateur. */
+					connection.query('SELECT * from profil WHERE password = ?', parseInt(document.getElementById('pass').value,2), function(err, rows, fields) { /* Sélectionne l'utilisateur. */
 						if(!err && rows[0]!=undefined){ /* Si l'utilisateur existe, on le dirige vers son profil. */
-							document.body.setAttribute('data-password',document.getElementById('pass').value);
+							document.body.setAttribute('data-password', parseInt(document.getElementById('pass').value,2));
 							ajax_menu();
 						}else{
 							document.getElementById('erreur').innerHTML = "Compte inexistant.";

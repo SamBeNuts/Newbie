@@ -1,3 +1,21 @@
+<?php
+
+if(!empty($_POST) && !empty($_POST['mail']) && !empty($_POST['password'])){
+	require_once 'inc/db.php';
+	$req = $pdo->prepare('SELECT * FROM profil WHERE mail = ? AND confirmed_at IS NOT NULL');
+	$req->execute([$_POST['mail']]);
+	$user = $req->fetch();
+	if(password_verify($_POST['password'], @$user->pw)){
+		session_start();
+		$_SESSION['auth'] = $user;
+		header('Location: account.php');
+		exit();
+	}else {
+		header('Location: index.php?error=1');
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html>
 	<head> <!-- Chaque page à le même head, sauf le titre qui change. -->
@@ -12,15 +30,17 @@
     <title>Newbie - Connexion</title>
   </head>
 	<body>
-		<div class="wrapper">
+		<div class="wrapper" <?php if(empty($_GET) && empty($_GET['error'])){ ?> data-visibility="hidden"<?php } ?> >
 			<div class="container">
 				<h1>Bienvenue</h1>
-				<form autocomplete="off" class="form">
+				<form action="" method="POST" autocomplete="off" class="form">
 					<input style="display:none"/>
-					<input type="text" placeholder="Email" />
-					<input type="password" placeholder="Mot de passe" />
+					<input name="mail" type="text" placeholder="Email" />
+					<input name="password" type="password" placeholder="Mot de passe" />
 					<button type="submit" id="login-button">Connexion</button><br>
-					<a id="password_lost" href="#">Mot de passe oublié ?</a>
+					<a class="password_lost" href="register.php">Créer un compte</a>
+					<a class="password_lost"> / </a>
+					<a class="password_lost" href="#">Mot de passe oublié ?</a>
 				</form>
 			</div>
 			<ul class="bg-bubbles">
@@ -36,6 +56,9 @@
 				<li></li>
 			</ul>
 		</div>
+		<?php
+		if(empty($_GET) && empty($_GET['error'])){
+		?>
     <div id="loading_page">
       <img id="img_fond" src="" />
       <div id="cadre_gauche"></div>
@@ -58,5 +81,8 @@
       </script>
       <footer>©2016 Newbie, Nutts Inc. -  <b><></b> with <b>♥</b> by <b>Newbie Team</b></footer> <!-- Texte de bas de page. -->
     </div>
+		<?php
+		}
+		?>
   </body>
 </html>

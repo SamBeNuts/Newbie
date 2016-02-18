@@ -163,7 +163,7 @@ footer {
   top: 50%;
 }
 
-.wrapper {
+.wrapper[data-visibility="hidden"]{
     opacity: 1;
     animation: wrapper 8s;
     -webkit-animation: wrapper 8s;

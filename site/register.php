@@ -12,7 +12,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
     <title>Newbie - Inscription</title>
   </head>
-	<body data-mail='' data-pw='' data-pw2=''>
+	<body data-mail='' data-pw=''>
 		<div class="wrapper">
 			<ul class="bg-bubbles">
 				<li></li>
@@ -38,13 +38,14 @@
 			<a id="q_num">1</a>
 			<i id="next" class="fa fa-long-arrow-right fa-2x"></i>
 		</div>
-		<a id="success">Un mail vous a été envoyé afin de terminer votre inscription.</a>
+		<a id="success" href="index.php">Un mail vous a été envoyé afin de terminer votre inscription. Cliquez sur ce message pour revenir sur la page d'accueil.</a>
 		<script>
 			window.onload=resize;
 			window.onresize=resize;
 			$('#success').fadeOut(0);
 			function resize(){
 				$('#form').css('margin-top',-(parseInt($('#form').css('height'))/2)+'px');
+				$('#success').css('width',window.innerWidth*0.6+'px');
 				$('#success').css('margin-top',-(parseInt($('#success').css('height'))/2)+'px');
 				$('#success').css('margin-left',-(parseInt($('#success').css('width'))/2)+'px');
 			}
@@ -63,18 +64,15 @@
 			});
 			function next(){
 				if ($('#input input').attr('name')=='q1') {
-					if (isEmail($('#input input').val())==true) {
-						$('body').attr('data-mail',$('#input input').val());
-						$('#q_num').html('2');
-						$('#error').html('');
-						$('#question').html('Choisissez votre mot de passe :');
-						$('#input').html('<input autocomplete="off" type="password" name="q2">');
-						$('#input input').focus();
-						$('#barre').animate({width:"200px"},2000);
-					}else{
-						$('#input input').val('');
-						$('#error').html('Cet email n\'est pas valide.');
-					}
+					$.post( "inc/verificate_mail.php", { mail: $('#input input').val()}, function(data){
+						if (data=='1'){
+							validate();
+						}else{
+							$('#input input').val('');
+							$('#input input').focus();
+							$('#error').html('Cet email est déjà utilisé par un autre compte.');
+						}
+					});
 				}
 				else if ($('#input input').attr('name')=='q2') {
 					if ($('#input input').val().length>=6 && $('#input input').val().length<=20) {
@@ -87,6 +85,7 @@
 						$('#barre').animate({width:"400px"},2000);
 					}else{
 						$('#input input').val('');
+						$('#input input').focus();
 						$('#error').html('Votre mot de passe doit avoir entre 6 et 20 caractères.');
 					}
 				}
@@ -96,6 +95,7 @@
 						$('#barre').animate({width:"600px"},2000);
 						$('#form').delay(2000).fadeOut(1500);
 						$('#success').delay(3500).fadeIn(1500);
+						$.post( "inc/inscription.php", { mail: $('body').attr('data-mail'), pw: $('body').attr('data-pw') } );
 					}else{
 						$('#error').html('Vos deux mots de passe ne sont pas identiques.');
 						$('body').attr('data-pw','');
@@ -105,6 +105,21 @@
 						$('#input input').focus();
 						$('#barre').animate({width:"200px"},2000);
 					}
+				}
+			}
+			function validate(){
+				if (isEmail($('#input input').val())==true) {
+					$('body').attr('data-mail',$('#input input').val());
+					$('#q_num').html('2');
+					$('#error').html('');
+					$('#question').html('Choisissez votre mot de passe :');
+					$('#input').html('<input autocomplete="off" type="password" name="q2">');
+					$('#input input').focus();
+					$('#barre').animate({width:"200px"},2000);
+				}else{
+					$('#input input').val('');
+					$('#input input').focus();
+					$('#error').html('Cet email n\'est pas valide.');
 				}
 			}
 			function isEmail(myVar){
