@@ -1,0 +1,421 @@
+/************** vecteurs de tests addition classique *******************/
+/* 1e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[3]={1384192096,755340476,1873791564};
+unsigned int b[4]={727314440,486528746,310847443,20021948};
+lentier aa;
+aa.p=a;
+aa.size=3;
+lentier bb;
+bb.p=b;
+bb.size=4;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2111506536,1241869222,2184639007,20021948,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 1 ***************/
+
+/* 2e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[8]={356913068,1459717050,869789044,513527502,1532440392,1391607188,1633553674,52506622};
+unsigned int b[6]={1943668517,340730073,1163874942,442229303,961574038,1319687055};
+lentier aa;
+aa.p=a;
+aa.size=8;
+lentier bb;
+bb.p=b;
+bb.size=6;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2300581585,1800447123,2033663986,955756805,2494014430,2711294243,1633553674,52506622,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 2 ***************/
+
+/* 3e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[3]={666437265,552357690,2020521164};
+unsigned int b[7]={648359737,348966436,1997816599,2032551834,1104306913,1724124515,612382626};
+lentier aa;
+aa.p=a;
+aa.size=3;
+lentier bb;
+bb.p=b;
+bb.size=7;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1314797002,901324126,4018337763,2032551834,1104306913,1724124515,612382626,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 3 ***************/
+
+/* 4e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[4]={632404575,2109027035,1475714828,989317643};
+unsigned int b[7]={1421260437,198020224,1502845146,806217181,1589627413,988915172,858723803};
+lentier aa;
+aa.p=a;
+aa.size=4;
+lentier bb;
+bb.p=b;
+bb.size=7;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2053665012,2307047259,2978559974,1795534824,1589627413,988915172,858723803,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 4 ***************/
+
+/* 5e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[3]={2022598746,1828041585,143735636};
+unsigned int b[6]={1194802153,1056453315,972279042,1861239418,1608811005,845316558};
+lentier aa;
+aa.p=a;
+aa.size=3;
+lentier bb;
+bb.p=b;
+bb.size=6;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{3217400899,2884494900,1116014678,1861239418,1608811005,845316558,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 5 ***************/
+
+/* 6e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[5]={695649509,247183694,914600707,272290377,859566320};
+unsigned int b[3]={357952718,159778687,1491970895};
+lentier aa;
+aa.p=a;
+aa.size=5;
+lentier bb;
+bb.p=b;
+bb.size=3;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1053602227,406962381,2406571602,272290377,859566320,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 6 ***************/
+
+/* 7e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[2]={333804891,1740756542};
+unsigned int b[4]={1833513740,1836650037,399490076,1275657505};
+lentier aa;
+aa.p=a;
+aa.size=2;
+lentier bb;
+bb.p=b;
+bb.size=4;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2167318631,3577406579,399490076,1275657505,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 7 ***************/
+
+/* 8e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[2]={513986139,2007726807};
+unsigned int b[8]={1133328977,194544076,3978795,180647482,1250997391,976257837,2041886901,712324749};
+lentier aa;
+aa.p=a;
+aa.size=2;
+lentier bb;
+bb.p=b;
+bb.size=8;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1647315116,2202270883,3978795,180647482,1250997391,976257837,2041886901,712324749,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 8 ***************/
+
+/* 9e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[5]={522618543,369740257,503702455,1437219250,642030634};
+unsigned int b[2]={1363268775,1795171968};
+lentier aa;
+aa.p=a;
+aa.size=5;
+lentier bb;
+bb.p=b;
+bb.size=2;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1885887318,2164912225,503702455,1437219250,642030634,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 9 ***************/
+
+/* 10e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[3]={2114668074,289819189,1041560914};
+unsigned int b[8]={1707940968,2123332929,730727303,2107431044,1251506786,1408808864,1218161276,1765492925};
+lentier aa;
+aa.p=a;
+aa.size=3;
+lentier bb;
+bb.p=b;
+bb.size=8;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{3822609042,2413152118,1772288217,2107431044,1251506786,1408808864,1218161276,1765492925,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 10 ***************/
+
+/* 11e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[8]={1960037001,1273030818,384654088,1063550745,101805008,279057341,1775875494,1923379404};
+unsigned int b[6]={535576102,151010389,145636013,1039278557,1588229639,787666648};
+lentier aa;
+aa.p=a;
+aa.size=8;
+lentier bb;
+bb.p=b;
+bb.size=6;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2495613103,1424041207,530290101,2102829302,1690034647,1066723989,1775875494,1923379404,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 11 ***************/
+
+/* 12e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[5]={1589475970,962819707,1203102385,1879295159,2004380621};
+unsigned int b[8]={763559706,1855144441,587624276,723507102,959167579,1996433141,1941668378,577176857};
+lentier aa;
+aa.p=a;
+aa.size=5;
+lentier bb;
+bb.p=b;
+bb.size=8;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2353035676,2817964148,1790726661,2602802261,2963548200,1996433141,1941668378,577176857,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 12 ***************/
+
+/* 13e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[5]={389730210,243548687,382845424,1453280955,345353695};
+unsigned int b[1]={661902765};
+lentier aa;
+aa.p=a;
+aa.size=5;
+lentier bb;
+bb.p=b;
+bb.size=1;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1051632975,243548687,382845424,1453280955,345353695,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 13 ***************/
+
+/* 14e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[2]={1197478867,1232683190};
+unsigned int b[4]={266885464,89273776,673429181,1054552112};
+lentier aa;
+aa.p=a;
+aa.size=2;
+lentier bb;
+bb.p=b;
+bb.size=4;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1464364331,1321956966,673429181,1054552112,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 14 ***************/
+
+/* 15e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[5]={496544434,1307157168,964965878,228355946,1164054141};
+unsigned int b[6]={1728525584,2083500387,1751678418,304549039,895184318,1600627911};
+lentier aa;
+aa.p=a;
+aa.size=5;
+lentier bb;
+bb.p=b;
+bb.size=6;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2225070018,3390657555,2716644296,532904985,2059238459,1600627911,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 15 ***************/
+
+/* 16e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[2]={571145779,96925105};
+unsigned int b[8]={1862091386,814694466,479770529,1167888693,1160048161,1141673294,102077847,1281297612};
+lentier aa;
+aa.p=a;
+aa.size=2;
+lentier bb;
+bb.p=b;
+bb.size=8;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2433237165,911619571,479770529,1167888693,1160048161,1141673294,102077847,1281297612,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 16 ***************/
+
+/* 17e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[2]={1548183077,280942289};
+unsigned int b[6]={2008190219,455251541,625279750,1770053712,951795976,1932436918};
+lentier aa;
+aa.p=a;
+aa.size=2;
+lentier bb;
+bb.p=b;
+bb.size=6;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{3556373296,736193830,625279750,1770053712,951795976,1932436918,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 17 ***************/
+
+/* 18e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[7]={949007411,168577879,1116168661,553202181,473126918,2011352979,6346444};
+unsigned int b[3]={571860687,1336230507,577492224};
+lentier aa;
+aa.p=a;
+aa.size=7;
+lentier bb;
+bb.p=b;
+bb.size=3;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1520868098,1504808386,1693660885,553202181,473126918,2011352979,6346444,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 18 ***************/
+
+/* 19e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[2]={1392186690,1148556322};
+unsigned int b[6]={71243290,404751204,142745969,173321137,1686048816,334414482};
+lentier aa;
+aa.p=a;
+aa.size=2;
+lentier bb;
+bb.p=b;
+bb.size=6;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{1463429980,1553307526,142745969,173321137,1686048816,334414482,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 19 ***************/
+
+/* 20e jeu de données */
+//début copier/coller (dans votre main)
+unsigned int a[8]={615356772,1368788746,1541999787,1240636522,991358810,346312115,1025589792,1578894752};
+unsigned int b[6]={1526464037,1974597203,1747472631,495149050,380315737,73115901};
+lentier aa;
+aa.p=a;
+aa.size=8;
+lentier bb;
+bb.p=b;
+bb.size=6;
+lentier res;
+res=add_classique(aa,bb);
+//fin copier/coller
+/*
+Résultat attendu:
+{2141820809,3343385949,3289472418,1735785572,1371674547,419428016,1025589792,1578894752,0};
+*/
+//Pensez à la libération mémoire avant de faire un autre test
+delete []res.p;
+/************ fin test 20 ***************/
+
